@@ -11,13 +11,12 @@ default: fibseq
 fibseq: $(objects)
 	$(CC) $(LDFLAGS) -o $@ $^
 
-fib.o: fib.c
+fib.o: fib_loop.s
+	$(CC) -c $(CFLAGS) -o $@ $<
+
 fibseq.o: fibseq.c
 
 %.o: %.c
-	$(CC) -c $(CFLAGS) -o $@ $<
-
-%.o: %.s
 	$(CC) -c $(CFLAGS) -o $@ $<
 
 clean:
