@@ -11,7 +11,8 @@ default: fibseq
 fibseq: $(objects)
 	$(CC) $(LDFLAGS) -o $@ $^
 
-fib.o: fib_loop.s
+# fib.o: fib_loop.s
+fib.o: fib_recursive.s
 	$(CC) -c $(CFLAGS) -o $@ $<
 
 fibseq.o: fibseq.c
