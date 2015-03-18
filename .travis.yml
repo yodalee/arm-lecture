@@ -1,0 +1,20 @@
+# Travis CI setting file
+# Build Fabonacci program and run python script unittest
+
+language: c
+
+before_install:
+  - sudo apt-get install python-software-properties # For `add-apt-repository`
+  - sudo add-apt-repository 'deb http://archive.ubuntu.com/ubuntu/ trusty main restricted' # For toolchain
+  - sudo add-apt-repository 'deb http://archive.ubuntu.com/ubuntu/ trusty main universe'
+  - sudo add-apt-repository 'deb http://archive.ubuntu.com/ubuntu/ trusty main multiverse'
+  - sudo apt-get update
+  - sudo apt-get install build-essential git-core
+  - sudo apt-get install gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf
+  - sudo apt-get install qemu-user qemu-system-arm
+  - sudo apt-get install python3 # For test script
+
+script:
+  - make -C lab-1
+  - cd lab-1/test
+  - python test-fib.py
